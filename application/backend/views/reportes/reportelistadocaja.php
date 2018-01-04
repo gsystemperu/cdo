@@ -73,6 +73,8 @@ ini_set("memory_limit", "120M");
             $totalcancelado = 0;
             $totalIngresos = 0;
             $totales_cobrados = 0;
+            $idpersona=$reporte[0]['_idper'];
+            
             foreach ($reporte as $item) 
             {
                 if($item['_tipodocumento'] == 'NOTA PEDIDO'){
@@ -210,14 +212,25 @@ ini_set("memory_limit", "120M");
                         
                 
                         <?php
-                        $i++;
-
+                        /*
                         //Variables de Contadores
-                        if($item['_citas']<=1){
+                        if($item['_citas']<=1 && $item['_idper']==$idpersona && $i==1){
                             $totalpacientesnuevos = $totalpacientesnuevos + 1;
+                        }else{
+                            if($item['_citas']<=1 && $item['_idper']!=$idpersona){
+                                $totalpacientesnuevos = $totalpacientesnuevos + 1;
+                            }
                         }
+                        if($i==1 && $item['_idper']==$idpersona){
+                            $totalpacientes = $totalpacientes + 1;
+                        }else{
+                            if($item['_idper']!=$idpersona){
+                                $totalpacientes = $totalpacientes + 1;
+                            }
+                        }
+                        $idpersona =$item['_idper'];*/
 
-                        $totalpacientes = $totalpacientes + 1;
+                        $i++;
                       }
                       
                     }
@@ -255,7 +268,8 @@ ini_set("memory_limit", "120M");
             $total4 = 0;
             $totalcancelado = 0;
             $totalIngresos = 0;
-            foreach ($reporte as $item) {
+            $idpersona = 0;
+        foreach ($reporte as $item) {
                 if($item['_tipodocumento'] <> 'NOTA PEDIDO'){
                 ?>
                 <tr>
@@ -414,18 +428,30 @@ ini_set("memory_limit", "120M");
 
                        <?php 
                        }
+
+
                     
                     ?>
 
-                        <?php
+                       <?php /*
+                          if($item['_citas']<=1 && $item['_idper']==$idpersona && $i==1){
+                            $totalpacientesnuevos = $totalpacientesnuevos + 1;
+                        }else{
+                            if($item['_citas']<=1 && $item['_idper']!=$idpersona){
+                                $totalpacientesnuevos = $totalpacientesnuevos + 1;
+                            }
+                        }
+                        if($i==1 && $item['_idper']==$idpersona){
+                            $totalpacientes = $totalpacientes + 1;
+                        }else{
+                            if($item['_idper']!=$idpersona){
+                                $totalpacientes = $totalpacientes + 1;
+                            }
+                        }
+                        $idpersona =$item['_idper'];*/
                         $i++;
 
-                         //Variables de Contadores
-                         if($item['_citas']<=1){
-                            $totalpacientesnuevos = $totalpacientesnuevos + 1;
-                        }
-
-                        $totalpacientes = $totalpacientes + 1;
+                       
 
 
                       }
@@ -450,16 +476,45 @@ ini_set("memory_limit", "120M");
         </tr>
         <tr>
             <td colspan="7">Totales  </td>
-            
+        </tr>    
+            <?php  
+                
+                foreach ($resumen as $item) 
+                {
+                    if($item['nuevo']==1){
+                        $totalpacientesnuevos = $totalpacientesnuevos + 1;
+                    }
+                    $totalpacientes  = $totalpacientes + 1 ;    
+                }
+
+
+            ?>
+    
+        
+
+
+        <tr>
+            <td colspan="3">Nro Pacientes : </td>
+            <td colspan="4"><?php  echo $totalpacientes; ?></td>
         </tr>
         <tr>
-            <td colspan="2">Nro Pacientes : </td>
-            <td colspan="5"><?php  echo $totalpacientes; ?></td>
+            <td colspan="3">Nro Pacientes Nuevos : </td>
+            <td colspan="4"><?php  echo $totalpacientesnuevos; ?></td>
         </tr>
-        <tr>
-            <td colspan="2">Nro Pacientes Nuevos : </td>
-            <td colspan="5"><?php  echo $totalpacientesnuevos; ?></td>
-        </tr>
+        <?php 
+             foreach ($resumen_prod as $item) 
+             {
+        ?>
+            <tr>
+            <td colspan="3"><?php echo $item['desprod'];  ?> : </td>
+            <td colspan="4"><?php  echo $item['cantidad']; ?></td>
+                
+            </tr>
+        <?php 
+               }
+        
+        ?>
+
         <!--<tr>
             <td colspan="5" style="text-align: right"> Saldo Inicial </td>
             <td style="text-align: right"><?php echo number_format($saldoinicial, 3); ?></td>

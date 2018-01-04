@@ -919,6 +919,9 @@ class Reportes extends CI_Controller {
         $data['reporte'] = $this->model_contrato->ADO_ListadoDeCajaHTML($fecha, $sede);
         $data['reporte_compras'] = $this->model_compra->ADO_ListadoDeCajaHTML($fecha, $sede);
         $data['pacientes'] = $this->model_cita->citas_sin_documento_venta($fecha, $sede);
+        $data['resumen'] = $this->model_contrato->ADO_ConteoPago($fecha,$sede);
+        $data['resumen_prod'] = $this->model_contrato->ADO_ConteoProd($fecha,$sede);
+
 
         $this->load->view('reportes/header');
         $this->load->view('reportes/reportelistadocaja', $data);

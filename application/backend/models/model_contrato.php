@@ -383,6 +383,37 @@ $_idmedcirujano,$_idvendedor,$_idproveedor, $_idmedexterno){
         //echo "SELECT * FROM om_general.sp_pago_medico ($param)";die();
 		$resultado = $this->db->query("SELECT * FROM om_general.sp_pago_medico (". $param .")" );
 		return $resultado->result_array();
-	}
+    }
+    
+    public function ADO_ConteoPago($fecha,$sede){
+        $resultado = $this->db->query("
+        select c.idper, 
+        CASE WHEN COALESCE(con.citas,0)::integer = 1 OR COALESCE(con.citas,0)::integer = 0 then 1 else 0 end nuevo, 
+        CASE WHEN COALESCE(con.citas,0)::integer > 1 then 1 else 0 end antiguo
+        from om_general.cp_tb_contrato c
+        left join (
+                select idper,count(*)::integer citas from om_general.cp_tb_citas group by idper 
+            ) con on con.idper = c.idper
+        WHERE c.femisioncont ='" . $fecha ."'::date and
+        c.estado=2 
+        and c.idtienda=". $sede ." 
+        group by c.idper,con.citas");
+        return $resultado->result_array();
+      }
+
+      public function ADO_ConteoProd($fecha,$sede){
+        $resultado = $this->db->query("
+        select cd.idprod,p.desprod, count(*)::integer cantidad from om_general.cp_tb_contratodet cd
+        left join om_general.cp_tb_contrato c on c.idcont = cd.idcont
+        left join om_general.cp_tb_producto p on cd.idprod = p.idprod
+        WHERE c.femisioncont ='". $fecha ."'::date and
+        c.estado=2 
+        and c.idtienda=". $sede ." 
+        group by cd.idprod ,p.desprod");
+        return $resultado->result_array();
+      }
+
+
+        
 
 }
