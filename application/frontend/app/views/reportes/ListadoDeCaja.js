@@ -88,30 +88,19 @@ Ext.define('MyDesktop.app.views.reportes.ListadoDeCaja', {
           iconCls : 'x-ico-lupa',
           id : 'btnBuscarListadoCaja',
           handler : function() {
-
-
             var _fecha = Ext.getCmp('dpFecha').getValue();
-
-
             var _saldo_inicial = Ext.getCmp('txtSaldoInicial').getValue();
             var _saldo_inicial_notas = Ext.getCmp('txtSaldoInicialNotas').getValue();
             var _sede =Ext.getCmp('cboSede').getValue();
-
-            console.log(_fecha);
-            console.log(_sede);
-            console.log(_saldo_inicial);
-            console.log(_saldo_inicial_notas);
-
             if(_sede==null)
             {Ext.Msg.alert('Error','Tiene que seleccionar el local!');return false;}
-            var _url = 'reportes/reportelistacajaventas?pfecha=' + _fecha+'&psede='+_sede + '&psaldoinicial='+ _saldo_inicial+'&saldoinicialnotas='+_saldo_inicial_notas;
             var _rpt = Ext.getCmp('wlistadocaja');
+            var _url = 'reportes/reportelistacajaventas?pfecha=' + _fecha+'&psede='+_sede + '&psaldoinicial='+ _saldo_inicial+'&saldoinicialnotas='+_saldo_inicial_notas;
             _rpt.removeAll();
             _rpt.add({
               xtype : 'uxiframe', // #3
               src : _url          // #4
             });
-
           }
         }
 

@@ -37,20 +37,3 @@ Ext.define("MyDesktop.app.models.cita.PacienteParaAtencion", {
 
     ]
 });
-
-
-
-/*
- * @descripcion : Modelo fotos del paciente
- * */
-Ext.define("MyDesktop.app.models.cita.Foto", {
-    extend: 'Ext.data.Model',
-    fields: [
-        {name: '_id', type: 'int'},
-        {name: '_idper', type: 'string'},
-        {name: "_tipo", type: "string"},
-        {name: '_fecha', type: 'string'}
-
-    ]
-});
-

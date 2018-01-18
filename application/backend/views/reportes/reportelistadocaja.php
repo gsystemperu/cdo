@@ -24,7 +24,7 @@ ini_set("memory_limit", "120M");
 </style>
 <html lang="en">
     <body style="padding:10px;">
-        
+
         <div class="Titulo">
             Listado de Caja al <?php echo $fecha; ?>
             <br>
@@ -62,7 +62,7 @@ ini_set("memory_limit", "120M");
 
             $totalpacientesnuevos=0;
             $totalpacientes=0;
-        
+
 
 
             $i = 1;
@@ -74,8 +74,8 @@ ini_set("memory_limit", "120M");
             $totalIngresos = 0;
             $totales_cobrados = 0;
             $idpersona=$reporte[0]['_idper'];
-            
-            foreach ($reporte as $item) 
+
+            foreach ($reporte as $item)
             {
                 if($item['_tipodocumento'] == 'NOTA PEDIDO'){
                 ?>
@@ -193,11 +193,11 @@ ini_set("memory_limit", "120M");
                     <td style="text-align: center"><?php echo $item['_formapago']; ?></td>
                     <td style="text-align: center"><?php echo utf8_decode($item['_medico']); ?></td>
                 </tr>
-                <?php 
+                <?php
                         $id = $item['_idcontrato'];
                         $sql =  $this->db->query("select p.desprod,c.cantidad,c.precio from om_general.cp_tb_contratodet  c
-                        left join om_general.cp_tb_producto p on 
-                        c.idprod = p.idprod 
+                        left join om_general.cp_tb_producto p on
+                        c.idprod = p.idprod
                         where c.idcont = $id" );
                         foreach ($sql->result_array() as $row) { ?>
                              <tr>
@@ -205,12 +205,12 @@ ini_set("memory_limit", "120M");
                              <td colspan="8"><?php  echo $row['desprod']; ?> </td>
                              </tr>
 
-                       <?php 
+                       <?php
                        }
-                    
+
                     ?>
-                        
-                
+
+
                         <?php
                         /*
                         //Variables de Contadores
@@ -232,7 +232,7 @@ ini_set("memory_limit", "120M");
 
                         $i++;
                       }
-                      
+
                     }
                     ?>
             <tr>
@@ -413,12 +413,12 @@ ini_set("memory_limit", "120M");
                     <td style="text-align: center"><?php echo $item['_formapago']; ?></td>
                     <td style="text-align: center"><?php echo utf8_decode($item['_medico']); ?></td>
                 </tr>
-               
-                 <?php 
+
+                 <?php
                         $id = $item['_idcontrato'];
                         $sql =  $this->db->query("select p.desprod,c.cantidad,c.precio from om_general.cp_tb_contratodet  c
-                        left join om_general.cp_tb_producto p on 
-                        c.idprod = p.idprod 
+                        left join om_general.cp_tb_producto p on
+                        c.idprod = p.idprod
                         where c.idcont = $id" );
                         foreach ($sql->result_array() as $row) { ?>
                              <tr>
@@ -426,11 +426,11 @@ ini_set("memory_limit", "120M");
                              <td colspan="8"><?php  echo $row['desprod']; ?> </td>
                              </tr>
 
-                       <?php 
+                       <?php
                        }
 
 
-                    
+
                     ?>
 
                        <?php /*
@@ -451,7 +451,7 @@ ini_set("memory_limit", "120M");
                         $idpersona =$item['_idper'];*/
                         $i++;
 
-                       
+
 
 
                       }
@@ -475,51 +475,6 @@ ini_set("memory_limit", "120M");
 
         </tr>
         <tr>
-            <td colspan="7">Totales  </td>
-        </tr>    
-            <?php  
-                
-                foreach ($resumen as $item) 
-                {
-                    if($item['nuevo']==1){
-                        $totalpacientesnuevos = $totalpacientesnuevos + 1;
-                    }
-                    $totalpacientes  = $totalpacientes + 1 ;    
-                }
-
-
-            ?>
-    
-        
-
-
-        <tr>
-            <td colspan="3">Nro Pacientes : </td>
-            <td colspan="4"><?php  echo $totalpacientes; ?></td>
-        </tr>
-        <tr>
-            <td colspan="3">Nro Pacientes Nuevos : </td>
-            <td colspan="4"><?php  echo $totalpacientesnuevos; ?></td>
-        </tr>
-        <?php 
-             foreach ($resumen_prod as $item) 
-             {
-        ?>
-            <tr>
-            <td colspan="3"><?php echo $item['desprod'];  ?> : </td>
-            <td colspan="4"><?php  echo $item['cantidad']; ?></td>
-                
-            </tr>
-        <?php 
-               }
-        
-        ?>
-
-        <!--<tr>
-            <td colspan="5" style="text-align: right"> Saldo Inicial </td>
-            <td style="text-align: right"><?php echo number_format($saldoinicial, 3); ?></td>
-        </tr>-->
-        <tr>
             <td colspan="5" style="text-align: right"> Ingresos </td>
             <td style="text-align: right"><?php
             //$totalIngresos = ( $total3 + $saldoinicial );
@@ -532,6 +487,43 @@ ini_set("memory_limit", "120M");
             <td colspan="5" style="text-align: right"> Total </td>
             <td style="text-align: right"><?php echo number_format(($total3 + $saldoinicial) - 0, 3); ?></td>
         </tr>-->
+
+        <tr>
+            <td colspan="7">Totales  </td>
+        </tr>
+            <?php
+
+                foreach ($resumen as $item)
+                {
+                    if($item['nuevo']==1){
+                        $totalpacientesnuevos = $totalpacientesnuevos + 1;
+                    }
+                    $totalpacientes  = $totalpacientes + 1 ;
+                }
+            ?>
+        <tr>
+            <td colspan="3">Nro Pacientes : </td>
+            <td colspan="4"><?php  echo $totalpacientes; ?></td>
+        </tr>
+        <tr>
+            <td colspan="3">Nro Pacientes Nuevos : </td>
+            <td colspan="4"><?php  echo $totalpacientesnuevos; ?></td>
+        </tr>
+        <?php
+             foreach ($resumen_prod as $item)
+             {
+        ?>
+            <tr>
+            <td colspan="3"><?php echo $item['desprod'];  ?> : </td>
+            <td colspan="4"><?php  echo $item['cantidad']; ?></td>
+
+            </tr>
+        <?php
+               }
+
+        ?>
+
+
     </table>
     <!--*******************************************************************-->
     <table style="width:85%;" class="Tabla" cellpadding="2" cellspacing="1.5" border="0">
@@ -581,9 +573,9 @@ foreach ($reporte_compras as $item) {
 
             </tr>
 
-            <?php 
+            <?php
                         $id = $item['_idcom'];
-                        $sql =  $this->db->query("select pro.desprod,cd.cantidad,cd.precio from 
+                        $sql =  $this->db->query("select pro.desprod,cd.cantidad,cd.precio from
                         om_general.cp_tb_comprasdet cd
                        LEFT JOIN om_general.cp_tb_producto pro on pro.idprod = cd.idprod
                        where cd.idcom =  $id" );
@@ -593,9 +585,9 @@ foreach ($reporte_compras as $item) {
                              <td colspan="4"><?php  echo $row['desprod']; ?> </td>
                              </tr>
 
-                       <?php 
+                       <?php
                        }
-                    
+
                     ?>
 
                     <?php

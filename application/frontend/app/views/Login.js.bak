@@ -34,7 +34,7 @@ Ext.define('MyDesktop.app.views.Login',{
                         name: 'username',
                         width : 330,
                         fieldStyle:'text-transform:uppercase;color:red;',
-                        value  : ''
+                        value  : 'EERAZO'
                     },{
                         fieldLabel: '<b>Contrase&ntilde;a</b>',
                         name: 'password',
@@ -42,7 +42,7 @@ Ext.define('MyDesktop.app.views.Login',{
                         width : 330,
                         allowBlank: false,
                         enableKeyEvents: true,
-                        value:'',
+                        value  : '10021985',
                         listeners: {
                             keypress:function(textfield, e) {
                                 if (e.button == 12) {

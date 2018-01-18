@@ -128,10 +128,10 @@ class Reportes extends CI_Controller {
         $pdf->Ln(5);
         $pdf->setX(20);
         $pdf->setFont("Arial", "", 7);
-        $pdf->Cell(50, 5, "�GRACIAS POR SU COMPRA...!", $borde, 2, "L");
+        $pdf->Cell(50, 5, utf8_decode ("¡GRACIAS POR SU COMPRA...!"), $borde, 2, "L");
         $pdf->setX(6);
         $pdf->setFont("Arial", "", 6);
-        $pdf->MultiCell(60, 5, "UNA VEZ RECIBIDA LA MERCADER�A NO SE ACEPTAN DEVOLUCIONES.", $borde, "L");
+        $pdf->MultiCell(60, 5, utf8_decode( "UNA VEZ RECIBIDA LA MERCADERÍA NO SE ACEPTAN DEVOLUCIONES."), $borde, "L");
         $pdf->Ln(3);
         $pdf->setX(7);
         $pdf->Cell(12, 5, "USUARIO : ", $borde, 0, "L");
@@ -249,10 +249,10 @@ class Reportes extends CI_Controller {
         $pdf->Ln(5);
         $pdf->setX(0);
         $pdf->setFont("Arial", "", 7);
-        $pdf->Cell(63, 5, "�GRACIAS POR SU COMPRA...!", $borde, 2, "C");
+        $pdf->Cell(63, 5, utf8_decode( "¡GRACIAS POR SU COMPRA...!"), $borde, 2, "C");
         $pdf->setX(0);
         $pdf->setFont("Arial", "", 6);
-        $pdf->MultiCell(63, 5, "UNA VEZ RECIBIDA LA MERCADER�A NO SE ACEPTAN DEVOLUCIONES.", $borde, "L");
+        $pdf->MultiCell(63, 5,utf8_decode( "UNA VEZ RECIBIDA LA MERCADERÍA NO SE ACEPTAN DEVOLUCIONES."), $borde, "L");
         $pdf->Ln(3);
         $pdf->setX(0);
         $pdf->Cell(14, 5, "USUARIO : ", $borde, 0, "L");
@@ -347,10 +347,10 @@ class Reportes extends CI_Controller {
         $pdf->Ln(5);
         $pdf->setX(20);
         $pdf->setFont("Arial", "", 7);
-        $pdf->Cell(50, 5, "�GRACIAS POR SU COMPRA...!", $borde, 2, "L");
+        $pdf->Cell(50, 5, utf8_decode("¡GRACIAS POR SU COMPRA...!"), $borde, 2, "L");
         $pdf->setX(6);
         $pdf->setFont("Arial", "", 6);
-        $pdf->MultiCell(60, 5, "UNA VEZ RECIBIDA LA MERCADER�A NO SE ACEPTAN DEVOLUCIONES.", $borde, "L");
+        $pdf->MultiCell(60, 5, utf8_decode("UNA VEZ RECIBIDA LA MERCADERÍA NO SE ACEPTAN DEVOLUCIONES."), $borde, "L");
         $pdf->Ln(3);
         $pdf->setX(6);
         $pdf->Cell(12, 5, "USUARIO : ", $borde, 0, "L");
@@ -484,7 +484,7 @@ class Reportes extends CI_Controller {
         $pdf->Ln(5);
         $pdf->setX(0);
         $pdf->setFont("Arial", "", 7);
-        $pdf->Cell(63, 5, "�GRACIAS POR SU COMPRA...!", $borde, 2, "C");
+        $pdf->Cell(63, 5, utf8_decode( "¡GRACIAS POR SU COMPRA...!"), $borde, 2, "C");
         $pdf->setX(0);
         $pdf->setFont("Arial", "", 6);
         $pdf->MultiCell(63, 5, "UNA VEZ RECIBIDA LA MERCADER�A NO SE ACEPTAN DEVOLUCIONES.", $borde, "C");
@@ -562,7 +562,7 @@ class Reportes extends CI_Controller {
         $fpdf->Image("./application/frontend/images/oftamiclog.jpg", 10, 10);
         $fpdf->setFont("Arial", "B", 8);
         $fpdf->setXY(5, 70);
-        $fpdf->Cell(65, 10, "Av. Per� 3428 - S.M.P.", $borde, 0, "C");
+        $fpdf->Cell(65, 10, utf8_decode( "Av. Perú 3428 - S.M.P."), $borde, 0, "C");
         $fpdf->Ln(10);
         $fpdf->setX(5);
         $fpdf->Cell(65, 10, "Telef : 5682505", $borde, 0, "C");
@@ -636,7 +636,7 @@ class Reportes extends CI_Controller {
         $fpdf->Image("./application/frontend/images/oftamiclog.jpg", 10, 10);
         $fpdf->setFont("Arial", "B", 8);
         $fpdf->setXY(5, 70);
-        $fpdf->Cell(65, 10, "Av. Per� 3428 - S.M.P.", $borde, 0, "C");
+        $fpdf->Cell(65, 10, utf8_decode("Av. Perú 3428 - S.M.P."), $borde, 0, "C");
         $fpdf->Ln(10);
         $fpdf->setX(5);
         $fpdf->Cell(65, 10, "Telef : 5682505", $borde, 0, "C");

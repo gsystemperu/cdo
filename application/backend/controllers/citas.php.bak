@@ -78,14 +78,4 @@ class Citas extends CI_Controller {
             );
     }
 
-    public function listarfotospaciente()
-    {
-        $idpersona= $this->input->get('vidpersona',0);
-        $data  = json_encode($this->model_cita->listarfotospaciente($idpersona));
-        $this->output
-            ->set_content_type('application/json')
-            ->set_status_header(200)
-            ->set_output($data);
-    }
-
 }

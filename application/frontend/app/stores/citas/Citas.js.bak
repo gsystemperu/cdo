@@ -59,26 +59,3 @@ Ext.define('MyDesktop.app.stores.citas.HistorialConsultorioPaciente', {
         }
     }
 });
-
-
-/*
- * @Descripcion : Store fotos del paciente
- * */
-
-Ext.define('MyDesktop.app.stores.citas.FotosPaciente', {
-    extend  : 'Ext.data.Store',
-    requires : 'MyDesktop.app.models.cita.Cita',
-    model   : 'MyDesktop.app.models.cita.Foto',
-    autoLoad: false,
-    remoteSort: true,
-    autoSync  : true,
-    proxy : {
-        type : 'ajax',
-        api  :{	read   : 'index.php/citas/listarfotospaciente'},
-        extraParams: {vidpersona:0},
-        reader : {
-            type : 'json',
-            root : 'items'
-        }
-    }
-});

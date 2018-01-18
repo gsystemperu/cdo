@@ -572,13 +572,6 @@ Ext.define('MyDesktop.app.views.servicio.consultorio.ConsultorioMedico', {
                                             layout: 'fit',
                                             padding: 5,
                                             items: [{xtype: 'restoingreso'}]
-                                        },
-                                         {
-                                            xtype: 'panel',
-                                            title: 'OCT / DIAGNOSTICO VISUAL',
-                                            layout: 'fit',
-                                            padding: 5,
-                                            items: [{xtype: 'wconsultafotosatenciones'}]
                                         }
                                     ]
 

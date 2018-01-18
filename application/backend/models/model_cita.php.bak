@@ -150,12 +150,5 @@ where d.idcont='".$arreglo["idcont"]."'"
         );
     }
 
-    function listarfotospaciente($idpersona){
-      $sql = "SELECT * FROM om_general.fx_fotos_listar(?)";
-      $param = array($idpersona);
-      $resultado = $this->db->query($sql,$param);
-      $data['items'] = $resultado->result();
-      return $data;
-    }
 
 }

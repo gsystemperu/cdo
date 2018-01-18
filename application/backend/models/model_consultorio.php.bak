@@ -210,12 +210,4 @@ class Model_consultorio extends CI_Model {
         return $data;
     }
 
-    function eliminar_photo($idphoto) {
-        $sql = "SELECT * FROM om_general.fx_forma_foto_eliminar(?)";
-        $param = array($idphoto);
-        $resultado = $this->db->query($sql, $param);
-        $data['items'] = $resultado->result();
-        return $data;
-    }
-
 }

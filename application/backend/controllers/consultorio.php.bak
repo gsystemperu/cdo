@@ -449,6 +449,4 @@ class Consultorio extends CI_Controller {
                ->set_output($data);
       }
 
-
-      
 }

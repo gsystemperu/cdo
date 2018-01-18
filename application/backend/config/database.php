@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 $active_group = 'default';
 $active_record = TRUE;
-$db['default']['hostname'] = '45.55.0.249';
+$db['default']['hostname'] = '174.138.50.166';
 $db['default']['username'] = 'postgres';
 $db['default']['password'] = '64y4.634##';
 $db['default']['database'] = 'dbclinicaojos';
