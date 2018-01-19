@@ -68,6 +68,7 @@ class Trabajadores extends CI_Controller {
 		$sexo      		= $this->input->post('vSexo');
 		$tipotrab      		= $this->input->post('vTipoTrab');
 		$usuario      		= $this->input->post('vUsuario');
+		$fechanaci = ($fechanaci==''?'01/01/1900':$fechanaci);
 		$id = ($id==''?0:$id);
 		$parametros = array(esNumeroCero($id),$paterno,$materno,$nombres,$fechanaci,$sexo,esNumeroCero($tipotrab),$usuario);
 		$rs = $this->model_trabajador->ADO_Actualizar_Trabajador($parametros);
